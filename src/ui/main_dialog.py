@@ -49,9 +49,13 @@ class MainDialog(object):
         self.pushButton = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButton.setObjectName("pushButton")
         self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(188, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            188, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum
+        )
         self.gridLayout.addItem(spacerItem, 1, 1, 1, 3)
-        spacerItem1 = QtWidgets.QSpacerItem(328, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(
+            328, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum
+        )
         self.gridLayout.addItem(spacerItem1, 2, 0, 1, 4)
         self.label_3 = QtWidgets.QLabel(self.layoutWidget)
         self.label_3.setObjectName("label_3")
@@ -65,14 +69,20 @@ class MainDialog(object):
         self.label = QtWidgets.QLabel(self.layoutWidget)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 5, 2, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(48, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem2 = QtWidgets.QSpacerItem(
+            48, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum
+        )
         self.gridLayout.addItem(spacerItem2, 5, 3, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(138, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem3 = QtWidgets.QSpacerItem(
+            138, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum
+        )
         self.gridLayout.addItem(spacerItem3, 6, 2, 1, 2)
-        spacerItem4 = QtWidgets.QSpacerItem(138, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem4 = QtWidgets.QSpacerItem(
+            138, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum
+        )
         self.gridLayout.addItem(spacerItem4, 7, 2, 1, 2)
         self.spinBox = QtWidgets.QSpinBox(self.layoutWidget)
-        self.spinBox.setProperty("value", 2)
+        self.spinBox.setProperty("value", 5)
         self.spinBox.setObjectName("spinBox")
         self.gridLayout.addWidget(self.spinBox, 8, 0, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.layoutWidget)
@@ -90,20 +100,22 @@ class MainDialog(object):
         self.checkBox.setObjectName("checkBox")
         self.gridLayout.addWidget(self.checkBox, 6, 0, 1, 2)
         self.checkBox_2 = QtWidgets.QCheckBox(self.layoutWidget)
-        self.checkBox_2.setChecked(True)
+        self.checkBox_2.setChecked(False)
         self.checkBox_2.setObjectName("checkBox_2")
         self.gridLayout.addWidget(self.checkBox_2, 7, 0, 1, 2)
         self.verticalLayout.addLayout(self.gridLayout)
         self.buttonBox = QtWidgets.QDialogButtonBox(self.layoutWidget)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(
+            QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok
+        )
         self.buttonBox.setCenterButtons(True)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(Dialog)
         # self.buttonBox.accepted.connect(Dialog.accept) # type: ignore
-        self.buttonBox.rejected.connect(Dialog.reject) # type: ignore
+        self.buttonBox.rejected.connect(Dialog.reject)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
         # perform final setup actions
@@ -119,15 +131,32 @@ class MainDialog(object):
         self.label_3.setText(_translate("Dialog", "Source Language"))
         self.label_4.setText(_translate("Dialog", "Target Language"))
         self.label.setText(_translate("Dialog", "Deck"))
-        self.spinBox.setToolTip(_translate("Dialog", "The default number of translations to use on the reverse side of each card"))
+        self.spinBox.setToolTip(
+            _translate(
+                "Dialog",
+                "The default number of translations to use on the reverse side of each card",
+            )
+        )
         self.label_2.setText(_translate("Dialog", "Default number of translations"))
-        self.comboBox.setToolTip(_translate("Dialog", "Choose which deck to import the generated cards into."))
+        self.comboBox.setToolTip(
+            _translate(
+                "Dialog", "Choose which deck to import the generated cards into."
+            )
+        )
         # self.comboBox.setPlaceholderText(_translate("Dialog", "Deck"))
-        self.checkBox.setToolTip(_translate("Dialog", "Create reverse vocab cards in addition to normal ones."))
+        self.checkBox.setToolTip(
+            _translate(
+                "Dialog", "Create reverse vocab cards in addition to normal ones."
+            )
+        )
         self.checkBox.setText(_translate("Dialog", "Create reverse cards"))
-        self.checkBox_2.setToolTip(_translate("Dialog", "Enable text to speech. Google TTS will be used to generate audio for your cards."))
+        self.checkBox_2.setToolTip(
+            _translate(
+                "Dialog",
+                "Enable text to speech. Google TTS will be used to generate audio for your cards.",
+            )
+        )
         self.checkBox_2.setText(_translate("Dialog", "Enable text-to-speech"))
-
 
     # Custom functions
 
@@ -135,9 +164,9 @@ class MainDialog(object):
     def populateFileText(self):
         filename = file_select_dialog.selectFile()
 
-        if filename and filename != '':
-                with codecs.open(filename, mode='r', encoding='utf-8') as file:
-                    self.setBoxText(str(file.read()))
+        if filename and filename != "":
+            with codecs.open(filename, mode="r", encoding="utf-8") as file:
+                self.setBoxText(str(file.read()))
 
         return
 
@@ -151,7 +180,7 @@ class MainDialog(object):
     def accept_dialog(self, Dialog):
         progress = self.create_progress_dialog()
 
-        text       = self.textEdit.toPlainText()
+        text = self.textEdit.toPlainText()
         collection = mw.col
 
         options = {}
@@ -160,26 +189,28 @@ class MainDialog(object):
         deck = self.comboBox.currentData()
 
         # Get the language settings from the combo boxes
-        src  = self.comboBox_2.currentData()
+        src = self.comboBox_2.currentData()
         dest = self.comboBox_3.currentData()
-        options['language'] = {'src': src, 'dest': dest}
+        options["language"] = {"src": src, "dest": dest}
 
         # Get the reverse setting from the main dialog
         reverse = self.checkBox.isChecked()
-        options['reverse'] = reverse
+        options["reverse"] = reverse
 
         # Get the tts setting from the main dialog
         if self.checkBox_2.isEnabled():
             tts = self.checkBox_2.isChecked()
-            options['tts'] = tts
+            options["tts"] = tts
         else:
-            options['tts'] = False
+            options["tts"] = False
 
         # Get the number of translations to include
         num_translations = self.spinBox.value()
-        options['num_translations'] = num_translations
+        options["num_translations"] = num_translations
 
-        generate.generate_cards(collection, deck, text, options, { 'main': Dialog, 'progress': progress })
+        generate.generate_cards(
+            collection, deck, text, options, {"main": Dialog, "progress": progress}
+        )
         progress.exec_()
 
     # Custom dialog setup
@@ -196,15 +227,18 @@ class MainDialog(object):
         self.populateLanguages(self.comboBox_3)
 
         # set the default target language to english
-        index = self.comboBox_3.findData("en")
+        index = self.comboBox_2.findData("en")
+        self.comboBox_2.setCurrentIndex(index)
+        index = self.comboBox_3.findData("zh-cn")
         self.comboBox_3.setCurrentIndex(index)
 
         # grey / ungrey tts box based on target language selection
-        self.comboBox_2.currentIndexChanged.connect(self.checkTTS(self.comboBox_2, self.checkBox_2))
+        self.comboBox_2.currentIndexChanged.connect(
+            self.checkTTS(self.comboBox_2, self.checkBox_2)
+        )
 
         # wire the accept button
         self.buttonBox.accepted.connect(util.wrap_nonary(self.accept_dialog)(Dialog))
-
 
     # Set the text within the main words entry text box
     def setBoxText(self, text):
@@ -219,9 +253,9 @@ class MainDialog(object):
         for deck in decks:
             comboBox.addItem(deck.name, deck)
 
-            if deck.name == 'Default':
+            if deck.name == "Default":
                 comboBox.setCurrentIndex(index)
-            
+
             index += 1
 
     # Pull languages from googletrans and populate the combo boxes
